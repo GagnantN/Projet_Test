@@ -1,18 +1,14 @@
 from flask import Flask, render_template
+import json
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    ma_tache = {
-        "titre": "Faire TP",
-        "description": "Tests pytest",
-        "date": "11-09-2026",
-        "statut": "En cours",
-        "priorite": "Haute"
-    }
+    with open('taches.json', 'r', encoding='utf-8') as fichier:
+        taches = json.load(fichier)
 
-    return render_template('index.html', data=ma_tache)
+    return render_template('index.html', taches=taches)
 
 if __name__ == '__main__':
     app.run(debug=True)
