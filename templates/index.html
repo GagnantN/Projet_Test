@@ -1,29 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Test</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
+
 <body>
     <h1>Projet Tâches / Testing</h1>
 
+    <!------------------------------ Formulaire de création ------------------------------>
+    <form class="formulaire-ajout" action="{{ url_for('ajouter') }}" method="POST">
+        <h2>Nouvelle tâche</h2>
+
+        {% if erreur == 'champs_vides' %}
+        <p class="message-erreur">Le titre et la date limite sont obligatoires.</p>
+        {% endif %}
+
+        <label for="titre">Titre</label>
+        <input type="text" id="titre" name="titre" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+
+        <label for="date">Date limite</label>
+        <input type="date" id="date" name="date" required>
+
+        <button type="submit">Ajouter la tâche</button>
+    </form>
+    <!------------------------------------------------------------------------------------>
+
+
+    <!------------------------------------- Filtres -------------------------------------->
+    <nav class="filtres">
+        <a href="{{ url_for('home', filtre='toutes') }}" class="{{ 'actif' if filtre == 'toutes' else '' }}">Toutes</a>
+        <a href="{{ url_for('home', filtre='actives') }}"
+            class="{{ 'actif' if filtre == 'actives' else '' }}">Actives</a>
+        <a href="{{ url_for('home', filtre='terminees') }}"
+            class="{{ 'actif' if filtre == 'terminees' else '' }}">Terminées</a>
+    </nav>
+    <!------------------------------------------------------------------------------------>
+
+
+    <!------------------------------------ Catalogue -------------------------------------->
     <div class="catalogue">
 
         {% for tache in taches %}
 
-            <div class="tache">
-                <h3>Nom de la tâche : {{ tache.titre }} </h3>
-                <p>Description : {{ tache.description }}</p> 
-                <p>Date : {{ tache.date }}</p> 
-                <p>Statut : {{ tache.statut }}</p> 
-                <p>Priorité : {{ tache.priorite }}</p>
+        <div class="tache">
+            <h3>Nom de la tâche : {{ tache.titre }} </h3>
+            <p>Description : {{ tache.description }}</p>
+            <p>Date : {{ tache.date }}</p>
+            <p>Statut : {{ tache.statut }}</p>
+            <p>Priorité : {{ tache.priorite }}</p>
+
+            <div class="actions">
+                {% if tache.statut != 'Terminé' %}
+                <form action="{{ url_for('terminer', tache_id=tache.id) }}" method="POST">
+                    <input type="hidden" name="filtre" value="{{ filtre }}">
+                    <button type="submit">Marquer comme terminée</button>
+                </form>
+                {% endif %}
+
+                <form action="{{ url_for('supprimer', tache_id=tache.id) }}" method="POST">
+                    <input type="hidden" name="filtre" value="{{ filtre }}">
+                    <button type="submit" class="bouton-supprimer">Supprimer</button>
+                </form>
             </div>
+        </div>
+
+        {% else %}
+
+        <p class="aucune-tache">Aucune tâche à afficher.</p>
 
         {% endfor %}
 
     </div>
-        
+    <!------------------------------------------------------------------------------------>
+
+
 </body>
+
 </html>

@@ -5,9 +5,51 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.formulaire-ajout {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 300px;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+.formulaire-ajout input,
+.formulaire-ajout textarea {
+    padding: 6px;
+    font-family: inherit;
+}
+
+.message-erreur {
+    color: #b00020;
+    margin: 0 0 6px 0;
+}
+
+.filtres {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.filtres a {
+    text-decoration: none;
+    color: #333;
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filtres a.actif {
+    background-color: #333;
+    color: #fff;
+}
+
 .catalogue {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
 }
 
@@ -15,5 +57,25 @@ body {
     border: 1px solid #ccc;
     padding: 20px;
     margin-top: 20px;
+    width: 250px;
 }
 
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.bouton-supprimer {
+    background-color: #b00020;
+    color: #fff;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.aucune-tache {
+    margin-top: 20px;
+    color: #666;
+}

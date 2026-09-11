@@ -3,7 +3,7 @@
         "id": 1,
         "titre": "Faire TP",
         "description": "Tests pytest",
-        "date": "11-09-2026",
+        "date": "2026-09-11",
         "statut": "En cours",
         "priorite": "Haute"
     },
@@ -11,8 +11,16 @@
         "id": 2,
         "titre": "Apprendre Flask",
         "description": "Créer une petite application",
-        "date": "12-09-2026",
+        "date": "2026-09-12",
         "statut": "À faire",
+        "priorite": "Moyenne"
+    },
+    {
+        "id": 3,
+        "titre": "manger",
+        "description": "j'ai faim",
+        "date": "2026-09-26",
+        "statut": "Terminé",
         "priorite": "Moyenne"
     }
 ]
