@@ -8,12 +8,22 @@
 </head>
 <body>
     <h1>Projet Tâches / Testing</h1>
-    <div class="tache">
-        <h3>Nom de la tâche : {{ data.titre }} </h3>
-        <p>Description : {{ data.description }}</p> 
-        <p>Date : {{ data.date }}</p> 
-        <p>Statut : {{ data.statut }}</p> 
-        <p>Priorité : {{ data.priorite }}</p>
+
+    <div class="catalogue">
+
+        {% for tache in taches %}
+
+            <div class="tache">
+                <h3>Nom de la tâche : {{ tache.titre }} </h3>
+                <p>Description : {{ tache.description }}</p> 
+                <p>Date : {{ tache.date }}</p> 
+                <p>Statut : {{ tache.statut }}</p> 
+                <p>Priorité : {{ tache.priorite }}</p>
+            </div>
+
+        {% endfor %}
+
     </div>
+        
 </body>
 </html>
