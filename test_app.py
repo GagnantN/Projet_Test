@@ -59,7 +59,10 @@ def client(tmp_path):
 
 def test_afficher_taches(client):
 
-    """ Vérifie que la page principale affiche les tâches. """
+    """
+    CT-VIEW-01 
+    Vérifie que la page principale affiche les tâches. 
+    """
 
     response = client.get("/")
     assert response.status_code == 200
