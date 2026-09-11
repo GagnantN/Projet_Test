@@ -5,6 +5,12 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.catalogue {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
 .tache {
     border: 1px solid #ccc;
     padding: 20px;
